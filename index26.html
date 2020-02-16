@@ -1,19 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Оператор ? и его использование</title>
+<title>Пример 31</title>
 </head>
 <body>
 	<script>
-		var a = 0; var b = 0; var c = 0;
-		while (a <= 0 && b <= 0 && a <= 0 || Number.isNaN(a) == true || Number.isNaN(b) == true)
+		var isValid = true;
+		do 
 		{
-		var a = prompt('Введите числовое значение для переменной a');
-		var b = prompt('Введите числовое значение для переменной b');
-		var c = prompt('Введите числовое значение для переменной c');
-		}
+			var a = prompt('Введите числовое значение для переменной a');
+			var b = prompt('Введите числовое значение для переменной b');
+			var c = prompt('Введите числовое значение для переменной c');
+			isValid = true;
+			if(Number(a) && Number(b) && Number(c))
+			{
+				if( a < 0 || b < 0 || c < 0)
+				{
+					alert('Нельзя обработать отрицательное число, т.к. речь идет о длине отрезка, который не может быть отрицательным');
+					isValid = false;
+					continue;
+				}
+				else
+					break;
+			}
+			if( a == 0 || b == 0 || c == 0) 
+			{				
+				alert('Число не может быть равно 0');
+				isValid = false;
+			}
+			else if( !Number(a) && a != 0 || !Number(b) && b != 0 || !Number(c) && c != 0)
+			{
+				alert('Число не введено');
+				isValid = false;
+			}	
+			else if( a == "" || b == "" || c == "")
+			{
+				alert('Число не введено');
+				isValid = false;
+			}				
+			
+		} while(!isValid)
 		var res = ((a * a + b * b) == (c * c)) ? 'Ура: угадали длины сторон треугольника' : 'Надо учить теорему';
 		alert(res);
+		
 	</script>
 </body>
 </html>
